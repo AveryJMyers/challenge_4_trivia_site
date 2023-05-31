@@ -10,22 +10,21 @@
 </head>
 <body>
     <main class="main-box">
-        <section id="timer" class="timer hide">60</section>
+        <div id="timer" class="timer hide">60</div>
+        <section id="visual-score" class="visual-score hide"><span id="score-value">0</span></section>
         <section id="question-text" class="">Are you ready to begin?</section>
         <section id="answer-buttons" class="btn-grid">
-            <button class="hide">Answer 1</button>
-            <button class="hide">Answer 2</button>
-            <button class="hide">Answer 3</button>
-            <button class="hide">Answer 4</button>
         </section>
         <section id="score-section" class = "hide">
-            <input type="text" id="score-name" placeholder="Enter your initials" minlength="3" maxlength="3" >
+            <input type="text" id="score-name" placeholder="Enter your initials" minlength="3" maxlength="3" autocomplete="off">
             <button id="save-score-btn" class="btn">Save Score</button>
         </section>
         <section class="controls">
             <button id="start-btn" class="start-btn btn">Yes!</button>
             <button id="next-btn" class="next-btn btn hide">Menu</button>
             <button id="scoreboard-btn" class="scoreboard-btn btn">👑Highscores👑</button>
+            <button id="rules-btn" class="rules-btn btn">Rules</button>
+           
         </section>
         <!-- <section id="timer" class="timer hide">60</section> -->
         <section id="score" class="score hide"><br>0</section>

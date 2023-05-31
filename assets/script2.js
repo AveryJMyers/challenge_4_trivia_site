@@ -24,6 +24,31 @@ var quizQuestions = [
       question: "What is the result of the following expression: 5 + '2'?",
       options: ["7", "52", "5 + 2", "Type Error"],
       answer: "52"
+    },
+    {
+      question: "What is the correct syntax for a 'for' loop in JavaScript?",
+      options: ["for (i = 0; i <= 5; i++)", "for (i <= 5; i++)", "for (i = 0; i <= 5)", "for (i <= 5)"],
+      answer: "for (i = 0; i <= 5; i++)"
+    },
+    {
+      question: "Which symbol is used for single-line comments in most programming languages?",
+      options: ["#", "//", "/*", "<!--"],
+      answer: "//"
+    },
+    {
+      question: "What does CSS stand for?",
+      options: ["Cascading Style Sheets", "Colorful Style Sheets", "Creative Style Sheets", "Computer Style Sheets"],
+      answer: "Cascading Style Sheets"
+    },
+    {
+      question: "What is the purpose of the 'return' statement in JavaScript?",
+      options: ["To restart the program execution", "To define a new function", "To exit a loop or function and return a value", "To comment out code"],
+      answer: "To exit a loop or function and return a value"
+    },
+    {
+      question: "What is the result of the following expression: 10 % 3?",
+      options: ["3", "1", "0.1", "Error"],
+      answer: "1"
     }
   ];
   
@@ -39,6 +64,8 @@ var quizQuestions = [
   var saveScoreBtn = document.getElementById("save-score-btn");
   var scoreSection = document.getElementById("score-section");
   var scoreboardButton = document.getElementById("scoreboard-btn");
+  var visualScore = document.getElementById("visual-score");
+  var rulesButton = document.getElementById("rules-btn");
 
 
 
@@ -53,6 +80,7 @@ var quizQuestions = [
   answerButtons.addEventListener("click", checkAnswer);
   saveScoreBtn.addEventListener("click", saveScore);
   scoreboardButton.addEventListener("click", listTopScores);
+  rulesButton.addEventListener("click", showRules);
   scoreName.addEventListener("input", function() {
     saveScoreBtn.disabled = scoreName.value.length !== 3;
   });
@@ -65,6 +93,8 @@ var quizQuestions = [
     nextButton.classList.add("hide");
     timerElement.classList.remove("hide");
     scoreboardButton.classList.add("hide");
+    visualScore.classList.remove("hide");
+    rulesButton.classList.add("hide");
     setNextQuestion();
     startTimer();
 
@@ -103,14 +133,16 @@ var quizQuestions = [
     if (selectedAnswer === question.answer) {
         console.log("Correct!");
         score+=10
-        changeBackgroundColor("green");
+        document.documentElement.style.background = "green";
+       updateScoreDisplay();
     } else {
         console.log("Incorrect!");
         timerSeconds-=10;
         if(timerSeconds<0){
             timerSeconds=0;
         }
-        changeBackgroundColor("red");
+        document.documentElement.style.background = "red";
+
 
     }
   
@@ -141,6 +173,7 @@ var quizQuestions = [
     questionText.innerText = "Your score is " + score;
     timerElement.classList.add("hide");
     scoreSection.classList.remove("hide");
+    document.documentElement.style.background = "";
 
   }
 
@@ -186,3 +219,17 @@ function listTopScores() {
     document.body.style.backgroundColor = color;
   }
   
+
+  // Update the score display
+function updateScoreDisplay() {
+  var scoreDisplay = document.getElementById("score-value");
+  scoreDisplay.textContent = score;
+}
+
+function showRules(){
+  startButton.classList.add("hide");
+  rulesButton.classList.add("hide");
+  nextButton.classList.remove("hide");
+  questionText.innerText = "You will have 60 seconds to answer as many questions as you can. When you guess correctly the screen will turn green and you will earn 10 points. When you guess a question incorrectly the screen will turn red and you will lose 10 seconds. Good luck!";
+}
+
