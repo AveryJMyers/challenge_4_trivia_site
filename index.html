@@ -6,22 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./assets/style.css">
-    <script defer src="./assets/script.js"></script>
+    <script defer src="./assets/script2.js"></script>
 </head>
 <body>
-    <main class="main-content-box">
-        <section class="question-text" class="hide">Question</section>
-        <section id="answer-buttons" clas="btn-grid">
-            <button class="btn">Answer 1</button>
-            <button class="btn">Answer 2</button>
-            <button class="btn">Answer 3</button>
-            <button class="btn">Answer 4</button>
+    <main class="main-box">
+        <section id="timer" class="timer hide">60</section>
+        <section id="question-text" class="">Are you ready to begin?</section>
+        <section id="answer-buttons" class="btn-grid">
+            <button class="hide">Answer 1</button>
+            <button class="hide">Answer 2</button>
+            <button class="hide">Answer 3</button>
+            <button class="hide">Answer 4</button>
+        </section>
+        <section id="score-section" class = "hide">
+            <input type="text" id="score-name" placeholder="Enter your initials" minlength="3" maxlength="3" >
+            <button id="save-score-btn" class="btn">Save Score</button>
         </section>
         <section class="controls">
-            <button id="start-btn" class="start-btn btn">Start</button>
-            <button id="next-btn" class="next-btn btn hide">Next</button>
-            </section>
+            <button id="start-btn" class="start-btn btn">Yes!</button>
+            <button id="next-btn" class="next-btn btn hide">Menu</button>
+            <button id="scoreboard-btn" class="scoreboard-btn btn">👑Highscores👑</button>
         </section>
+        <!-- <section id="timer" class="timer hide">60</section> -->
+        <section id="score" class="score hide"><br>0</section>
     </main>
 </body>
 </html>
