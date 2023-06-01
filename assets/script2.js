@@ -1,4 +1,6 @@
 
+// Creates an array of objects that contain the questions, options, and answers for the quiz
+
 var quizQuestions = [
     {
       question: "What is the correct syntax for declaring a variable in JavaScript?",
@@ -52,7 +54,7 @@ var quizQuestions = [
     }
   ];
   
-  
+  // Variable declorations
   var questionText = document.getElementById("question-text");
   var startButton = document.getElementById("start-btn");
   var mainBox = document.getElementById("main-box");
@@ -68,14 +70,14 @@ var quizQuestions = [
   var rulesButton = document.getElementById("rules-btn");
 
 
-
-
   var currentQuestion = 0;
   var score = 0;
   var timerSeconds = 60;
   var countdownInterval;
   saveScoreBtn.disabled = true;
   
+  // Event listeners
+
   startButton.addEventListener("click", startQuiz);
   answerButtons.addEventListener("click", checkAnswer);
   saveScoreBtn.addEventListener("click", saveScore);
@@ -88,6 +90,7 @@ var quizQuestions = [
     location.reload();
   });
   
+  //Starts the quiz
   function startQuiz() {
     startButton.classList.add("hide");
     nextButton.classList.add("hide");
@@ -99,7 +102,7 @@ var quizQuestions = [
     startTimer();
 
   }
-  
+  // Brings a new question to the screen
   function setNextQuestion() {
     if (currentQuestion >= quizQuestions.length) {
       // All questions have been asked
@@ -111,10 +114,10 @@ var quizQuestions = [
     var question = quizQuestions[currentQuestion];
     questionText.innerText = question.question;
   
-    // Clear answer buttons
+    // Clears answer buttons
     answerButtons.innerHTML = "";
   
-    // Create answer buttons dynamically
+    // Creates answer buttons as needed
     for (var i = 0; i < question.options.length; i++) {
         var option = question.options[i];
         var answerButton = document.createElement("button");
@@ -125,7 +128,7 @@ var quizQuestions = [
   
     console.log(question);
   }
-  
+  //checks answer and responds accoidingly
   function checkAnswer(event) {
         var selectedAnswer = event.target.innerText;
         var question = quizQuestions[currentQuestion];
@@ -150,11 +153,11 @@ var quizQuestions = [
     setNextQuestion();
   }
   
-  
+  //starts the timer 
   function startTimer() {
         countdownInterval = setInterval(updateTimer, 1000);
   }
-  
+  //updates the timer
   function updateTimer() {
         if (timerSeconds > 0) {
             timerSeconds--;
@@ -166,6 +169,7 @@ var quizQuestions = [
         }
   }
   
+  //Ends the quiz and allows user to input their initials
   
   function endQuiz(){
     answerButtons.innerHTML = "";
@@ -177,6 +181,7 @@ var quizQuestions = [
 
   }
 
+  //save score to local storage
 function saveScore(){
     var playerName = scoreName.value;
     var playerScore = score;
@@ -190,7 +195,7 @@ function saveScore(){
     nextButton.classList.remove("hide");
 
 }
-
+// creates a list of all top scores in local storage
 function listTopScores() {
     var scores = JSON.parse(localStorage.getItem("scores")) || [];
     scores.sort(function(a, b) {
@@ -214,7 +219,7 @@ function listTopScores() {
 
   }
   
-  
+  //changes color of the background, called when answering a question
   function changeBackgroundColor(color) {
     document.body.style.backgroundColor = color;
   }
@@ -226,6 +231,7 @@ function updateScoreDisplay() {
   scoreDisplay.textContent = score;
 }
 
+//shows the rules of the game
 function showRules(){
   startButton.classList.add("hide");
   rulesButton.classList.add("hide");
