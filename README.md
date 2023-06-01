@@ -21,3 +21,8 @@ ChatGPT used for debugging.
 ## License
 
 N/A
+
+## Visuals
+
+![image]
+(screencapture-averyjmyers-github-io-challenge-4-trivia-site-2023-05-31-21_57_21.png)
